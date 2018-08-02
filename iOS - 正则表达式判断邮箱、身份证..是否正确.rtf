@@ -1,0 +1,115 @@
+{\rtf1\ansi\ansicpg936\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fnil\fcharset134 STSongti-SC-Regular;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16200\viewh11520\viewkind0
+\deftab720
+\pard\pardeftab720\sl560
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 //
+\f1 \'d3\'ca\'cf\'e4
+\f0 \
+\pard\pardeftab720\sl560
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 + (BOOL) validateEmail:(NSString *)email\
+\{\
+\'a0 \'a0 NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]\{2,4\}";\
+\'a0 \'a0 NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];\
+\'a0 \'a0 return [emailTest evaluateWithObject:email];\
+\}\
+\'a0\
+\'a0\
+//
+\f1 \'ca\'d6\'bb\'fa\'ba\'c5\'c2\'eb\'d1\'e9\'d6\'a4
+\f0 \
++ (BOOL) validateMobile:(NSString *)mobile\
+\{\
+\'a0 \'a0 //
+\f1 \'ca\'d6\'bb\'fa\'ba\'c5\'d2\'d4
+\f0 13
+\f1 \'a3\'ac
+\f0  15
+\f1 \'a3\'ac
+\f0 18
+\f1 \'bf\'aa\'cd\'b7\'a3\'ac\'b0\'cb\'b8\'f6
+\f0  \\d 
+\f1 \'ca\'fd\'d7\'d6\'d7\'d6\'b7\'fb
+\f0 \
+\'a0 \'a0 NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\\\D])|(18[0,0-9]))\\\\d\{8\}$";\
+\'a0 \'a0 NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];\
+\'a0 \'a0 return [phoneTest evaluateWithObject:mobile];\
+\}\
+\'a0\
+\'a0\
+//
+\f1 \'b3\'b5\'c5\'c6\'ba\'c5\'d1\'e9\'d6\'a4
+\f0 \
++ (BOOL) validateCarNo:(NSString *)carNo\
+\{\
+\'a0 \'a0 NSString *carRegex = @"^[\\u4e00-\\u9fa5]\{1\}[a-zA-Z]\{1\}[a-zA-Z_0-9]\{4\}[a-zA-Z_0-9_\\u4e00-\\u9fa5]$";\
+\'a0 \'a0 NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];\
+\'a0 \'a0 NSLog(@"carTest is %@",carTest);\
+\'a0 \'a0 return [carTest evaluateWithObject:carNo];\
+\}\
+\'a0\
+\'a0\
+//
+\f1 \'b3\'b5\'d0\'cd
+\f0 \
++ (BOOL) validateCarType:(NSString *)CarType\
+\{\
+\'a0 \'a0 NSString *CarTypeRegex = @"^[\\u4E00-\\u9FFF]+$";\
+\'a0 \'a0 NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",CarTypeRegex];\
+\'a0 \'a0 return [carTest evaluateWithObject:CarType];\
+\}\
+\'a0\
+\'a0\
+//
+\f1 \'d3\'c3\'bb\'a7\'c3\'fb
+\f0 \
++ (BOOL) validateUserName:(NSString *)name\
+\{\
+\'a0 \'a0 NSString *userNameRegex = @"^[A-Za-z0-9]\{6,20\}+$";\
+\'a0 \'a0 NSPredicate *userNamePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",userNameRegex];\
+\'a0 \'a0 BOOL B = [userNamePredicate evaluateWithObject:name];\
+\'a0 \'a0 return B;\
+\}\
+\'a0\
+\'a0\
+//
+\f1 \'c3\'dc\'c2\'eb
+\f0 \
++ (BOOL) validatePassword:(NSString *)passWord\
+\{\
+\'a0 \'a0 NSString *passWordRegex = @"^[a-zA-Z0-9]\{6,20\}+$";\
+\'a0 \'a0 NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];\
+\'a0 \'a0 return [passWordPredicate evaluateWithObject:passWord];\
+\}\
+\'a0\
+\'a0\
+//
+\f1 \'ea\'c7\'b3\'c6
+\f0 \
++ (BOOL) validateNickname:(NSString *)nickname\
+\{\
+\'a0 \'a0 NSString *nicknameRegex = @"^[\\u4e00-\\u9fa5]\{4,8\}$";\
+\'a0 \'a0 NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];\
+\'a0 \'a0 return [passWordPredicate evaluateWithObject:nickname];\
+\}\
+\'a0\
+\'a0\
+//
+\f1 \'c9\'ed\'b7\'dd\'d6\'a4\'ba\'c5
+\f0 \
++ (BOOL) validateIdentityCard: (NSString *)identityCard\
+\{\
+\'a0 \'a0 BOOL flag;\
+\'a0 \'a0 if (identityCard.length <= 0) \{\
+\'a0 \'a0 \'a0 \'a0 flag = NO;\
+\'a0 \'a0 \'a0 \'a0 return flag;\
+\'a0 \'a0 \}\
+\'a0 \'a0 NSString *regex2 = @"^(\\\\d\{14\}|\\\\d\{17\})(\\\\d|[xX])$";\
+\'a0 \'a0 NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];\
+\'a0 \'a0 return [identityCardPredicate evaluateWithObject:identityCard];\
+\}\
+}

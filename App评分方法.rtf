@@ -1,0 +1,70 @@
+{\rtf1\ansi\ansicpg936\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;\f2\fnil\fcharset134 STSongti-SC-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red92\green38\blue153;\red46\green13\blue110;
+\red196\green26\blue22;\red170\green13\blue145;\red28\green0\blue207;\red38\green48\blue38;\red100\green56\blue32;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16440\viewh12880\viewkind0
+\deftab577
+\pard\tx577\pardeftab577\pardirnatural
+
+\f0\fs24 \cf2 \CocoaLigature0 //
+\f1 \'b5\'da\'d2\'bb\'d6\'d6\'b7\'bd\'ca\'bd\'a3\'ba\'a3\'a8\'cd\'c6\'bc\'f6\'a3\'a9
+\f0 \cf0 \
+\cf3 NSString\cf0  *str = [\cf3 NSString\cf0  \cf4 stringWithFormat\cf0 :\cf5 @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=587767923"\cf0  ];\
+\cf6 if\cf0 ( ([[[\cf3 UIDevice\cf0  \cf4 currentDevice\cf0 ] \cf4 systemVersion\cf0 ] \cf4 doubleValue\cf0 ]>=\cf7 7.0\cf0 ))\
+	str = [\cf3 NSString\cf0  \cf4 stringWithFormat\cf0 :\cf5 @"itms-apps://itunes.apple.com/app/id587767923"\cf0 ];\
+[[\cf3 UIApplication\cf0  \cf4 sharedApplication\cf0 ] \cf4 openURL\cf0 :[\cf3 NSURL\cf0  \cf4 URLWithString\cf0 :str]];\
+\
+\
+\cf2 //
+\f1 \'b5\'da\'b6\'fe\'d6\'d6\'b7\'bd\'ca\'bd\'a3\'ba\
+
+\f2\fs28 \cf0 1\'a1\'a2\expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec8 \'b5\'bc\'c8\'ebStoreKit.framework,\
+2\'a1\'a2\kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 #import <StoreKit/StoreKit.h>\
+3\'a1\'a2\expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec8 \'ca\'b5\'cf\'d6\'b4\'fa\'c0\'edSKStoreProductViewControllerDelegate\kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+4\'a1\'a2\'b5\'f7\'d3\'c3 [self evaluate];
+\f0\fs24 \cf2 \
+\cf0 \
+- (\cf6 void\cf0 )evaluate\
+\{\
+    \cf2 //
+\f1 \'b3\'f5\'ca\'bc\'bb\'af\'bf\'d8\'d6\'c6\'c6\'f7
+\f0 \cf0 \
+    \cf3 SKStoreProductViewController\cf0  *storeProductViewContorller = [[\cf3 SKStoreProductViewController\cf0  \cf4 alloc\cf0 ] \cf4 init\cf0 ];\
+    \cf2 //
+\f1 \'c9\'e8\'d6\'c3\'b4\'fa\'c0\'ed\'c7\'eb\'c7\'f3\'ce\'aa\'b5\'b1\'c7\'b0\'bf\'d8\'d6\'c6\'c6\'f7\'b1\'be\'c9\'ed
+\f0 \cf0 \
+    storeProductViewContorller.\cf3 delegate\cf0  = \cf6 self\cf0 ;\
+    \cf2 //
+\f1 \'bc\'d3\'d4\'d8\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4\'ca\'d3\'cd\'bc\'d5\'b9\'ca\'be
+\f0 \cf0 \
+    [storeProductViewContorller \cf4 loadProductWithParameters\cf0 : \cf7 @\{\cf3 SKStoreProductParameterITunesItemIdentifier\cf0  : \cf5 @"587767923"\cf7 \}\cf0  \cf4 completionBlock\cf0 :^(\cf6 BOOL\cf0  result, \cf3 NSError\cf0  *error) \{\
+         \cf2 //block
+\f1 \'bb\'d8\'b5\'f7
+\f0 \cf0 \
+         \cf6 if\cf0 (error)\
+         \{\
+             \cf9 NSLog\cf0 (\cf5 @"error %@ with userInfo %@"\cf0 ,error,[error \cf4 userInfo\cf0 ]);\
+         \}\
+         \cf6 else\cf0 \
+         \{\cf2 //
+\f1 \'c4\'a3\'cc\'ac\'b5\'af\'b3\'f6
+\f0 appstore\cf0 \
+             [\cf6 self\cf0  \cf4 presentViewController\cf0 :storeProductViewContorller \cf4 animated\cf0 :\cf6 YES\cf0  \cf4 completion\cf0 :^\{\
+             \}];\
+         \}\
+     \}];\
+\}\
+\
+\cf2 //
+\f1 \'c8\'a1\'cf\'fb\'b0\'b4\'c5\'a5\'bc\'e0\'cc\'fd
+\f0 \cf0 \
+- (\cf6 void\cf0 )productViewControllerDidFinish:(\cf3 SKStoreProductViewController\cf0  *)viewController\{\
+    [\cf6 self\cf0  \cf4 dismissViewControllerAnimated\cf0 :\cf6 YES\cf0  \cf4 completion\cf0 :^\{\
+        \
+    \}];\
+\}\
+}
